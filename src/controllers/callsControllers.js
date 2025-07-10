@@ -10,11 +10,11 @@ const getCalls = async (_, res) => {
     }
 };
 
-const createOnecall = async (req, res) => {
+const createOneCall = async (req, res) => {
     const {title, description, users_id, status_id, sector_id, responsible_id} = req.body;
     try{
         const call = await pool.query(
-            'INSERT INTO tb_calls (title, description, users_id, status_id, sector_id, responsible_id VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+            'INSERT INTO tb_calls (title, description, users_id, status_id, sector_id, responsible_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
             [title, description, users_id, status_id, sector_id, responsible_id]
         );
         res.status(200).json(call.rows[0]);
@@ -63,4 +63,4 @@ const deleteOneCall = async (req, res) => {
     };
 };
 
-module.exports = {getCalls, createOnecall, updateOneCall, deleteOneCall};
+module.exports = {getCalls, createOneCall, updateOneCall, deleteOneCall};
