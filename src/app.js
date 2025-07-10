@@ -11,11 +11,9 @@ app.use(express.json());
 
 app.use('/calls', callsRoutes);
 app.use('/status', statusRoutes);
-app.use('users', usersRoutes);
-app.use('sector', sectorRoutes);
-app.use('responsible', responsibleRoutes);
-
-
+app.use('/users', usersRoutes);
+app.use('/sector', sectorRoutes);
+app.use('/responsible', responsibleRoutes);
 
 
 module.exports = app
